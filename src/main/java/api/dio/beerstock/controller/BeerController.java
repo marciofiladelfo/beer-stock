@@ -3,6 +3,7 @@ package api.dio.beerstock.controller;
 import api.dio.beerstock.exception.BeerAlreadyRegisteredException;
 import api.dio.beerstock.exception.BeerNotFoundException;
 import api.dio.beerstock.exception.BeerStockExceededException;
+import api.dio.beerstock.repository.BeerRepository;
 import api.dio.beerstock.service.BeerService;
 import lombok.AllArgsConstructor;
 import api.dio.beerstock.dto.BeerDTO;
@@ -24,8 +25,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/beers")
-@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class BeerController implements BeerControllerDocs {
+
+    @Autowired
+    public  BeerController(BeerService beerService){
+        this.beerService = beerService;
+    }
 
     private final BeerService beerService;
 
